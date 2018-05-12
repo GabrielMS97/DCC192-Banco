@@ -1,9 +1,24 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="../jspf/cabecalho.jspf" %>
 <p>Tarefas a serem feitas:</p>
-<ul>
+<p><a href="tarefa-nova.html">[Adicionar]</a></p>
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
     <c:forEach var="tarefa" items="${tarefas}">
-        <li>${tarefa}</li>
+        <tr>
+            <td>${tarefa.titulo}</td>
+            <td>
+            <form method="post" action="terefa-exclui.html">
+                <input type="hidden" name="id" value="${tarefa.id}"/>
+                <input type="submit" value="X"/>
+            </form>
+            </td>
+        </tr>
     </c:forEach>
-</ul>
+</table>
 <%@include file="../jspf/rodape.jspf" %>
